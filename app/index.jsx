@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 if(process.env.NODE_ENV !== 'production') {
   React.Perf = require('react-addons-perf');
 }
 
+injectTapEventPlugin();
+
+const AppHandler = () => (
+  <MuiThemeProvider>
+    <App />
+  </MuiThemeProvider>
+);
+
 ReactDOM.render(
-  <App />,
+  <AppHandler />,
   document.getElementById('app')
 );

@@ -1,6 +1,20 @@
 import React from 'react';
 import Note from './Note';
 import Editable from './Editable';
+import TaskEditor from './TaskEditor';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import Avatar from 'material-ui/Avatar';
+
+
+import {
+    blue300,
+    indigo900,
+    orange200,
+    deepOrange300,
+    pink400,
+    purple500
+} from 'material-ui/styles/colors';
 
 export default ({
     notes,
@@ -8,16 +22,21 @@ export default ({
 }) => (
         <ul className = "notes">{notes.map(({id, editing, task}) =>
             <li key={id}>
-                <Note className = "note" onClick={() => onNoteClick(id) }>
-                    <Editable
-                        className = "editable"
-                        editing = {editing}
-                        value = {task}
-                        onEdit = {onEdit.bind(null, id) }/>
-                    <button
-                        className = "delete"
-                        onClick = {onDelete.bind(null, id) }>x</button>
-                </Note>
+                <Card>
+                    <CardHeader
+                        avatar = {<Avatar color={indigo900}
+                            backgroundColor={blue300}>{task.charAt(0) }</Avatar>}
+                        title={task}
+                        actAsExpander={true}
+                        subtitle="Task"/>
+                    <CardText expandable={true}>
+                        <CardActions>
+                            <TaskEditor task = {task} id='{id}' onEdit = {onEdit.bind(null, id) }/>
+                            <FlatButton label="Complete"
+                                onClick = {onDelete.bind(null, id) } />
+                        </CardActions>
+                    </CardText>
+                </Card>
             </li>
         ) }</ul>
     )

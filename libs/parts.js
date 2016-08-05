@@ -8,7 +8,7 @@ exports.indexTemplate = function (options) {
   return {
     plugins: [
       new HtmlWebpackPlugin({
-        template: require('html-webpack-template'),
+        template: "default_index.ejs",
         title: options.title,
         appMountId: options.appMountId,
         mobile:true,
