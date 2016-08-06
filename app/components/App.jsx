@@ -2,6 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import 'whatwg-fetch';
 import Notes from './Notes';
+import AddTask from './AddTask';
 import Header from './Header';
 import Signalr from '../signalr';
 import {addTask, getTasks, completeTask, editTask} from '../queries';
@@ -27,6 +28,7 @@ export default class App extends React.Component {
 
     refreshTasks() {
         getTasks((tasks) => {
+            tasks = tasks.sort((x, y) => y.id - x.id);
             console.log(tasks);
             this.setState({ notes: tasks });
         });
@@ -36,21 +38,22 @@ export default class App extends React.Component {
         const {notes} = this.state;
         return (
             <div>
-                <Header addNote = {this.addNote}/>
+                <Header/>
                 <Notes notes={notes}
                     onNoteClick={this.activateNoteEdit}
                     onEdit = {this.editNote}
                     onDelete = {this.deleteNote}/>
+                <AddTask addNote = {this.addNote}/>
             </div>
         );
     }
 
     addNote = (task = 'New') => {
         this.setState({
-            notes: this.state.notes.concat([{
+            notes: ([{
                 id: uuid.v4(),
                 task: task
-            }])
+            }]).concat(this.state.notes)
         });
         addTask(task);
     }
