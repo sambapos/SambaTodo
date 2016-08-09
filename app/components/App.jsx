@@ -1,6 +1,5 @@
 import React from 'react';
 import uuid from 'uuid';
-import 'whatwg-fetch';
 import Notes from './Notes';
 import AddTask from './AddTask';
 import Header from './Header';
@@ -40,7 +39,6 @@ export default class App extends React.Component {
             <div>
                 <Header/>
                 <Notes notes={notes}
-                    onNoteClick={this.activateNoteEdit}
                     onEdit = {this.editNote}
                     onDelete = {this.deleteNote}/>
                 <AddTask addNote = {this.addNote}/>
@@ -56,6 +54,7 @@ export default class App extends React.Component {
             }]).concat(this.state.notes)
         });
         addTask(task);
+        
     }
 
     deleteNote = (id, e) => {
@@ -64,17 +63,6 @@ export default class App extends React.Component {
             notes: this.state.notes.filter(note => note.id !== id)
         });
         completeTask(id);
-    }
-
-    activateNoteEdit = (id) => {
-        this.setState({
-            notes: this.state.notes.map(note => {
-                if (note.id === id) {
-                    note.editing = true;
-                }
-                return note;
-            })
-        });
     }
 
     editNote = (id, task) => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -46,6 +45,7 @@ export default class TaskEditor extends React.Component {
             <FlatButton
                 label="Cancel"
                 primary={false}
+                keyboardFocused={true}
                 onTouchTap={this.handleCancel}
                 />
         ];
@@ -59,7 +59,6 @@ export default class TaskEditor extends React.Component {
                     modal={true}
                     open={this.state.open}>
                     <TextField
-                        autoFocus
                         id={this.props.id}
                         fullWidth={true}
                         value = {this.state.task}

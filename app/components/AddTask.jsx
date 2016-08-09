@@ -36,6 +36,7 @@ export default class AddTask extends React.Component {
   finishEdit = () => {
     this.props.addNote(this.state.editValue);
     this.setState({ editValue: '' });
+    window.scrollTo(0,0);
   }
 
   checkEnter = (e) => {
@@ -70,7 +71,7 @@ export default class AddTask extends React.Component {
         <Dialog
           title="Add a Task"
           actions={actions}
-          modal={false}
+          modal={true}
           open={this.state.open}
           onRequestClose={this.handleClose}
           >
