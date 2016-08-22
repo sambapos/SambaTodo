@@ -6,6 +6,10 @@ body {
 
 .notes {
   margin-top: 65px;
-  padding-left: 0;
+  padding: 5px;
   list-style: none;
+}
+
+.mrkdwn p {
+  margin: 0;
 }

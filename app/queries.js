@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import jQuery from 'jquery';
 
-const serverUrl = 'http://192.168.1.8:9000'
+const serverUrl = 'http://localhost:9000'
 
 $.postJSON = function (url, data, callback) {
     return jQuery.ajax({

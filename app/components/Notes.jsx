@@ -4,7 +4,7 @@ import TaskEditor from './TaskEditor';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Avatar from 'material-ui/Avatar';
-
+import ReactMarkdown from 'react-markdown';
 
 import {
     blue300,
@@ -24,9 +24,8 @@ export default class Notes extends React.Component {
                     <li key={id}>
                         <Card>
                             <CardHeader
-                                avatar = {<Avatar color={indigo900}
-                                    backgroundColor={blue300}>{task.charAt(0) }</Avatar>}
-                                title={task}
+                                avatar = {<Avatar>{task.charAt(0) }</Avatar>}
+                                title={<ReactMarkdown className='mrkdwn' source={task}/>}
                                 actAsExpander={true}
                                 subtitle="Task"/>
                             <CardText expandable={true}>

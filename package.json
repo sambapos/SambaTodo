@@ -61,6 +61,7 @@
     "ms-signalr-client": "^2.2.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-markdown": "^2.4.2",
     "react-tap-event-plugin": "^1.0.0",
     "uuid": "^2.0.2"
   }
